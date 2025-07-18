@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會計審核智能問答系統</title>
     
-    <!-- Google tag (gtag.js) - Google Analytics 追蹤代碼 -->
+    <!-- [已整合] Google tag (gtag.js) - Google Analytics 追蹤代碼 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GW2PWFXQC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,140 +14,136 @@
     
       gtag('config', 'G-8GW2PWFXQC');
     </script>
-
+    
+    <!-- 引入 Font Awesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 基本樣式 */
+        /* --- 全局樣式 --- */
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', 'Microsoft JhengHei', 'Helvetica Neue', sans-serif;
-            background-color: #f4f7f9;
-            color: #333;
+            font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+            background-color: #000000;
+            color: #fff;
+            line-height: 1.6;
         }
 
-        /* 主要容器 */
+        /* --- 容器與標題 --- */
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 1360px;
+            margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
 
-        /* 主標題 */
         .main-title {
             text-align: center;
-            color: #1a3b5d;
-            font-size: 2em;
-            margin-bottom: 25px;
-            border-bottom: 3px solid #e0e6ec;
-            padding-bottom: 15px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ACD6FF;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7),
+                         0 0 30px rgba(172, 214, 255, 0.3);
         }
 
-        /* 雙欄佈局容器 */
-        .columns-container {
-            display: flex;
-            gap: 25px; /* 欄位間距 */
-        }
-
-        /* 欄位 */
-        .column {
-            flex: 1; /* 每欄等寬 */
-            background-color: #fdfdfd;
-            padding: 20px;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-        }
-
-        /* 分類標題 */
         .category-title {
-            color: #0056b3;
-            font-size: 1.5em;
-            margin-top: 0;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #007bff;
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 25px;
         }
 
-        /* 表格樣式 */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
+        /* --- 項目網格佈局 --- */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
-        .data-table td {
-            padding: 15px 10px;
-            border-bottom: 1px solid #e9ecef;
-            vertical-align: middle;
+        /* --- 項目卡片樣式 --- */
+        .item-card {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+            background-color: #282828;
+        }
+
+        .item-card .icon {
+            font-size: 3rem;
+            color: #4dabf7;
+            margin-bottom: 15px;
+        }
+
+        .item-card h3 {
+            font-size: 1.3rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .item-card p {
+            font-size: 0.9rem;
+            color: #dcdcdc;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        /* --- 按鈕樣式 --- */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #ffffff;
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
         }
         
-        .data-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* 按鈕儲存格 */
-        .data-table td.action-cell {
-            width: 100px;
+        .footer {
             text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
         }
 
-        /* 項目編號 */
-        .item-number {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #6c757d;
-            padding-right: 10px;
-        }
-
-        /* 項目內容 */
-        .item-title {
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #343a40;
-            margin: 0 0 5px 0;
-        }
-
-        .item-description {
-            font-size: 0.9em;
-            color: #666;
+        .footer p {
             margin: 0;
+            padding: 0;
         }
 
-        /* 連結按鈕 */
-        .action-button {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 8px 16px;
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .action-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* 頁尾 */
-        footer {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 0.85em;
-            color: #aaa;
-        }
-
-        /* 響應式設計：當螢幕寬度小於900px時，雙欄變單欄 */
-        @media (max-width: 900px) {
-            .columns-container {
-                flex-direction: column;
+        /* --- 響應式設計 --- */
+        @media (min-width: 1300px) {
+            .items-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
-            .container {
-                margin: 10px;
-                padding: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            .category-title {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -155,91 +151,98 @@
 <body>
 
     <div class="container">
-        <header>
-            <h1 class="main-title">會計審核智能問答系統</h1>
-        </header>
+        <h1 class="main-title">會計審核智能問答系統</h1>
 
-        <div class="columns-container">
-            <!-- ========== 左欄：審核類 ========== -->
-            <div class="column">
-                <h2 class="category-title">審核類</h2>
-                <table class="data-table">
-                    <tbody>
-                        <tr>
-                            <td class="action-cell"><a href="https://poe.com/PAQA" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Poe'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">1.</span></td>
-                            <td>
-                                <div class="item-title">國內出差旅費智能問答</div>
-                                <p class="item-description">提供國內出差智能問答系統。</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="action-cell"><a href="https://ds-qa-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'DS'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">2.</span></td>
-                            <td>
-                                <div class="item-title">銷貨折讓(退回)智能問答</div>
-                                <p class="item-description">銷貨折讓或退回的辦理流程。</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="action-cell"><a href="https://refund-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Refund'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">3.</span></td>
-                            <td>
-                                <div class="item-title">退款流程智能回答</div>
-                                <p class="item-description">退款的種類說明。</p>
-                            </td>
-                        </tr>
-                        <!-- 新增的第4點 -->
-                        <tr>
-                            <td class="action-cell"><a href="https://tar-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Tar'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">4.</span></td>
-                            <td>
-                                <div class="item-title">轉帳通知單調整作業</div>
-                                <p class="item-description">轉帳通知單調整的各種情況說明。</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <!-- 審核類 -->
+        <h2 class="category-title">審核類</h2>
+        <div class="items-grid">
+            <!-- 項目 1: 國內出差旅費 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-plane-departure icon"></i>
+                    <h3>國內出差旅費智能問答</h3>
+                    <p>提供國內出差的宿、膳、雜及交通等費用報支的智能問答系統，協助您快速完成核銷。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://poe.com/PAQA" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Poe'});" target="_blank" rel="noopener noreferrer" class="btn">開始問答</a>
             </div>
 
-            <!-- ========== 右欄：其他類 ========== -->
-            <div class="column">
-                <h2 class="category-title">其他類</h2>
-                <table class="data-table">
-                    <tbody>
-                        <tr>
-                            <td class="action-cell"><a href="https://gas-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Gas'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">1.</span></td>
-                            <td>
-                                <div class="item-title">九宮格目標圖</div>
-                                <p class="item-description">訂定目標後，由AI提供8種策略並分析。</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="action-cell"><a href="https://flu-check-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Flu'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">2.</span></td>
-                            <td>
-                                <div class="item-title">感冒、流感、新冠自我評估</div>
-                                <p class="item-description">透過AI判斷身體的不適是哪一種症狀。</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="action-cell"><a href="https://bmi-health-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'BMI'});" target="_blank" rel="noopener noreferrer" class="action-button">連結點</a></td>
-                            <td><span class="item-number">3.</span></td>
-                            <td>
-                                <div class="item-title">BMI指數健康規劃</div>
-                                <p class="item-description">可根據年齡、身高、體重計算並由AI提出建議。</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <!-- 項目 2: 銷貨折讓(退回) -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-file-invoice-dollar icon"></i>
+                    <h3>銷貨折讓(退回)智能問答</h3>
+                    <p>銷貨折讓或退回的申請相關規定、文件準備與處理流程。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://ds-qa-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'DS'});" target="_blank" rel="noopener noreferrer" class="btn">查看流程</a>
+            </div>
+
+            <!-- 項目 3: 退款流程 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-hand-holding-usd icon"></i>
+                    <h3>退款流程智能回答</h3>
+                    <p>說明不同種類的退款（如：溢收款、擔保款退款及固定資產退款等）檢附文件與退款作業程序。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://refund-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Refund'});" target="_blank" rel="noopener noreferrer" class="btn">了解種類</a>
+            </div>
+
+            <!-- 項目 4: 轉帳通知單調整 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-exchange-alt icon"></i>
+                    <h3>轉帳通知單調整作業</h3>
+                    <p>轉帳通知單各種調整情況及規定，異代使用等進行說明。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://tar-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Tar'});" target="_blank" rel="noopener noreferrer" class="btn">了解作業</a>
             </div>
         </div>
 
-        <footer>
-            <p>© 2025 會計部門. 歡迎轉傳.</p>
-        </footer>
+        <!-- 其他類 -->
+        <h2 class="category-title">其他類</h2>
+        <div class="items-grid">
+            <!-- 項目 5: 九宮格目標圖 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-th-large icon"></i>
+                    <h3>九宮格目標圖</h3>
+                    <p>輸入您的核心目標，AI 將為您生成八種達成目標的策略並進行可行性分析。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://gas-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Gas'});" target="_blank" rel="noopener noreferrer" class="btn">制定目標</a>
+            </div>
+
+            <!-- 項目 6: 健康自我評估 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-stethoscope icon"></i>
+                    <h3>感冒、流感、新冠自我評估</h3>
+                    <p>透過回答一系列問題，由 AI 協助初步判斷您的不適症狀可能屬於哪一種類型。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://flu-check-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Flu'});" target="_blank" rel="noopener noreferrer" class="btn">開始評估</a>
+            </div>
+            
+            <!-- 項目 7: BMI指數健康規劃 -->
+            <div class="item-card">
+                <div>
+                    <i class="fas fa-heartbeat icon"></i>
+                    <h3>BMI指數健康規劃</h3>
+                    <p>輸入年齡、身高、體重，計算您的BMI指數，並由AI提供個人化的健康與飲食建議。</p>
+                </div>
+                <!-- [已整合] 連結與點擊追蹤 -->
+                <a href="https://bmi-health-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'BMI'});" target="_blank" rel="noopener noreferrer" class="btn">立即計算</a>
+            </div>
+        </div>
     </div>
+    
+    <footer class="footer">
+        <!-- [已更新] 頁尾文字 -->
+        <p>© 2025 會計部門. 歡迎轉傳.</p>
+    </footer>
 
 </body>
 </html>
