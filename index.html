@@ -158,7 +158,7 @@
             <!-- 項目 1: 國內出差旅費 -->
             <div class="item-card">
                 <div>
-                    <i class="fas fa-plane-departure icon"></i>
+                    <i class="fas fa-taxi icon"></i>
                     <h3>國內出差旅費智能問答</h3>
                     <p>提供國內出差的宿、膳、雜及交通等費用報支的智能問答系統，協助您快速完成核銷。</p>
                 </div>
@@ -244,4 +244,19 @@
     </footer>
 
 </body>
+<script>
+  // 禁止右鍵
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // 禁止 F12 和 Ctrl+Shift+I 等快捷鍵
+  document.onkeydown = function(e) {
+    if (
+      e.key === "F12" || 
+      (e.ctrlKey && e.shiftKey && e.key === "I") || 
+      (e.ctrlKey && e.key === "U")
+    ) {
+      return false;
+    }
+  };
+</script>
 </html>
