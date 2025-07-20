@@ -5,29 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>會計審核智能問答系統</title>
     
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GW2PWFXQC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-8GW2PWFXQC');
     </script>
     
-    <!-- 引入 Font Awesome 圖示庫 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome 圖示庫 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         /* --- 全局樣式 --- */
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Microsoft JhengHei', 'PingFang TC', sans-serif;
-            background-color: #000000;
+            background: url('https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed; 
+            background-size: cover;
             color: #fff;
             line-height: 1.6;
+            position: relative;
+            z-index: 0;
         }
 
-        /* --- 容器與標題 --- */
+        /* --- 背景遮罩層 --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7); /* 黑色半透明遮罩 */
+            z-index: -1;
+        }
+
         .container {
             max-width: 1360px;
             margin: 0 auto;
@@ -52,14 +64,12 @@
             margin-bottom: 25px;
         }
 
-        /* --- 項目網格佈局 --- */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
-        /* --- 項目卡片樣式 --- */
         .item-card {
             background: #1a1a1a;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -97,7 +107,6 @@
             margin-bottom: 20px;
         }
 
-        /* --- 按鈕樣式 --- */
         .btn {
             display: inline-block;
             background: linear-gradient(135deg, #007bff, #0056b3);
@@ -130,13 +139,12 @@
             padding: 0;
         }
 
-        /* --- 響應式設計 --- */
         @media (min-width: 1300px) {
             .items-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
         }
-        
+
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.2rem;
@@ -155,47 +163,39 @@
         <!-- 審核類 -->
         <h2 class="category-title">審核類</h2>
         <div class="items-grid">
-            <!-- 項目 1: 國內出差旅費 -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-taxi icon"></i>
                     <h3>國內出差旅費智能問答</h3>
                     <p>提供國內出差的宿、膳、雜及交通等費用報支的智能問答系統，協助您快速完成核銷。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://poe.com/PAQA" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Poe'});" target="_blank" rel="noopener noreferrer" class="btn">開始問答</a>
             </div>
 
-            <!-- 項目 2: 銷貨折讓(退回) -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-file-invoice-dollar icon"></i>
                     <h3>銷貨折讓(退回)智能問答</h3>
                     <p>銷貨折讓或退回的申請相關規定、文件準備與處理流程。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://ds-qa-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'DS'});" target="_blank" rel="noopener noreferrer" class="btn">查看流程</a>
             </div>
 
-            <!-- 項目 3: 退款流程 -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-hand-holding-usd icon"></i>
                     <h3>退款流程智能回答</h3>
                     <p>說明不同種類的退款（如：溢收款、擔保款退款及固定資產退款等）檢附文件與退款作業程序。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://refund-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Refund'});" target="_blank" rel="noopener noreferrer" class="btn">了解種類</a>
             </div>
 
-            <!-- 項目 4: 轉帳通知單調整 -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-exchange-alt icon"></i>
                     <h3>轉帳通知單調整作業</h3>
                     <p>轉帳通知單各種調整情況及規定，異代使用等進行說明。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://tar-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Tar'});" target="_blank" rel="noopener noreferrer" class="btn">了解作業</a>
             </div>
         </div>
@@ -203,60 +203,52 @@
         <!-- 其他類 -->
         <h2 class="category-title">其他類</h2>
         <div class="items-grid">
-            <!-- 項目 5: 九宮格目標圖 -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-th-large icon"></i>
                     <h3>九宮格目標圖</h3>
                     <p>輸入您的核心目標，AI 將為您生成八種達成目標的策略並進行可行性分析。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://gas-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Gas'});" target="_blank" rel="noopener noreferrer" class="btn">制定目標</a>
             </div>
 
-            <!-- 項目 6: 健康自我評估 -->
             <div class="item-card">
                 <div>
                     <i class="fas fa-stethoscope icon"></i>
                     <h3>感冒、流感、新冠自我評估</h3>
                     <p>透過回答一系列問題，由 AI 協助初步判斷您的不適症狀可能屬於哪一種類型。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://flu-check-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'Flu'});" target="_blank" rel="noopener noreferrer" class="btn">開始評估</a>
             </div>
-            
-            <!-- 項目 7: BMI指數健康規劃 -->
+
             <div class="item-card">
                 <div>
                     <i class="fas fa-heartbeat icon"></i>
                     <h3>BMI指數健康規劃</h3>
                     <p>輸入年齡、身高、體重，計算您的BMI指數，並由AI提供個人化的健康與飲食建議。</p>
                 </div>
-                <!-- [已整合] 連結與點擊追蹤 -->
                 <a href="https://bmi-health-982630479858.us-west1.run.app" onclick="gtag('event', 'click', {'event_category': 'App Click', 'event_label': 'BMI'});" target="_blank" rel="noopener noreferrer" class="btn">立即計算</a>
             </div>
         </div>
     </div>
     
     <footer class="footer">
-        <!-- [已更新] 頁尾文字 -->
         <p>© 2025 會計部門. 歡迎轉傳.</p>
     </footer>
 
-</body>
-<script>
-  // 禁止右鍵
-  document.addEventListener('contextmenu', event => event.preventDefault());
+    <!-- 禁止右鍵和F12 -->
+    <script>
+      document.addEventListener('contextmenu', event => event.preventDefault());
 
-  // 禁止 F12 和 Ctrl+Shift+I 等快捷鍵
-  document.onkeydown = function(e) {
-    if (
-      e.key === "F12" || 
-      (e.ctrlKey && e.shiftKey && e.key === "I") || 
-      (e.ctrlKey && e.key === "U")
-    ) {
-      return false;
-    }
-  };
-</script>
+      document.onkeydown = function(e) {
+        if (
+          e.key === "F12" || 
+          (e.ctrlKey && e.shiftKey && e.key === "I") || 
+          (e.ctrlKey && e.key === "U")
+        ) {
+          return false;
+        }
+      };
+    </script>
+</body>
 </html>
